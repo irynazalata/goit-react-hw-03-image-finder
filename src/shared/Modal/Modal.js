@@ -18,6 +18,7 @@ class Modal extends Component {
       this.props.closeModal();
     }
   };
+
   render() {
     return (
       <div className={styles.Overlay}>

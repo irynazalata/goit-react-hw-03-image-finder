@@ -75,12 +75,14 @@ class App extends Component {
 
   handleBigImg = largeImg => {
     this.setState({ largeImg });
+    document.body.classList.add('modal-isOpen');
   };
 
   closeModal = () => {
     this.setState({
       largeImg: '',
     });
+    document.body.classList.remove('modal-isOpen');
   };
   render() {
     const { images, loading, error, found, largeImg } = this.state;
@@ -94,7 +96,9 @@ class App extends Component {
         )}
         <ImageGallery images={images} handleBigImg={this.handleBigImg} />
         {loading && <ImageLoader />}
-        {images.length > 0 && !loading && <Button onClick={this.fetchImages} />}
+        {images.length > 0 && !loading && found && (
+          <Button onClick={this.fetchImages} />
+        )}
         {largeImg && <Modal largeImg={largeImg} closeModal={this.closeModal} />}
       </>
     );
