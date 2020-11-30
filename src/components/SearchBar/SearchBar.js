@@ -3,13 +3,14 @@ import styles from './SearchBar.module.css';
 import PropTypes from 'prop-types';
 
 class SearchBar extends Component {
+  static propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+  };
+
   state = {
     inputValue: '',
   };
 
-  static propTypes = {
-    onSubmit: PropTypes.func.isRequired,
-  };
   handleChange = event => {
     this.setState({ inputValue: event.target.value });
   };
