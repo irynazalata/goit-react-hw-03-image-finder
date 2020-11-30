@@ -36,10 +36,6 @@ class App extends Component {
   }
 
   fetchImages = () => {
-    window.scrollTo({
-      top: document.documentElement.scrollHeight,
-      behavior: 'smooth',
-    });
     const { searchQuery, page } = this.state;
     this.setState({ loading: true });
     imagesApi
@@ -89,7 +85,7 @@ class App extends Component {
     return (
       <>
         <SearchBar onSubmit={this.handleSearchFormSubmit} />
-        {(error || !found) && (
+        {(error || !found) && !images.length && (
           <h2 style={{ textAlign: 'center' }}>
             Oops, something went wrong. Enter a correct query
           </h2>
